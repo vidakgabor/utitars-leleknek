@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SzolgaltatasokRouteImport } from './routes/szolgaltatasok'
 import { Route as RolamRouteImport } from './routes/rolam'
+import { Route as PublikaciokRouteImport } from './routes/publikaciok'
 import { Route as InformaciokRouteImport } from './routes/informaciok'
 import { Route as IndexRouteImport } from './routes/index'
 
@@ -22,6 +23,11 @@ const SzolgaltatasokRoute = SzolgaltatasokRouteImport.update({
 const RolamRoute = RolamRouteImport.update({
   id: '/rolam',
   path: '/rolam',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PublikaciokRoute = PublikaciokRouteImport.update({
+  id: '/publikaciok',
+  path: '/publikaciok',
   getParentRoute: () => rootRouteImport,
 } as any)
 const InformaciokRoute = InformaciokRouteImport.update({
@@ -38,12 +44,14 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/informaciok': typeof InformaciokRoute
+  '/publikaciok': typeof PublikaciokRoute
   '/rolam': typeof RolamRoute
   '/szolgaltatasok': typeof SzolgaltatasokRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/informaciok': typeof InformaciokRoute
+  '/publikaciok': typeof PublikaciokRoute
   '/rolam': typeof RolamRoute
   '/szolgaltatasok': typeof SzolgaltatasokRoute
 }
@@ -51,20 +59,33 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/informaciok': typeof InformaciokRoute
+  '/publikaciok': typeof PublikaciokRoute
   '/rolam': typeof RolamRoute
   '/szolgaltatasok': typeof SzolgaltatasokRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/informaciok' | '/rolam' | '/szolgaltatasok'
+  fullPaths:
+    | '/'
+    | '/informaciok'
+    | '/publikaciok'
+    | '/rolam'
+    | '/szolgaltatasok'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/informaciok' | '/rolam' | '/szolgaltatasok'
-  id: '__root__' | '/' | '/informaciok' | '/rolam' | '/szolgaltatasok'
+  to: '/' | '/informaciok' | '/publikaciok' | '/rolam' | '/szolgaltatasok'
+  id:
+    | '__root__'
+    | '/'
+    | '/informaciok'
+    | '/publikaciok'
+    | '/rolam'
+    | '/szolgaltatasok'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   InformaciokRoute: typeof InformaciokRoute
+  PublikaciokRoute: typeof PublikaciokRoute
   RolamRoute: typeof RolamRoute
   SzolgaltatasokRoute: typeof SzolgaltatasokRoute
 }
@@ -83,6 +104,13 @@ declare module '@tanstack/react-router' {
       path: '/rolam'
       fullPath: '/rolam'
       preLoaderRoute: typeof RolamRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/publikaciok': {
+      id: '/publikaciok'
+      path: '/publikaciok'
+      fullPath: '/publikaciok'
+      preLoaderRoute: typeof PublikaciokRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/informaciok': {
@@ -105,9 +133,20 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   InformaciokRoute: InformaciokRoute,
+  PublikaciokRoute: PublikaciokRoute,
   RolamRoute: RolamRoute,
   SzolgaltatasokRoute: SzolgaltatasokRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
