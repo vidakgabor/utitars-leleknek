@@ -14,6 +14,7 @@ import { Route as RolamRouteImport } from './routes/rolam'
 import { Route as PublikaciokRouteImport } from './routes/publikaciok'
 import { Route as KapcsolatRouteImport } from './routes/kapcsolat'
 import { Route as InformaciokRouteImport } from './routes/informaciok'
+import { Route as AszfRouteImport } from './routes/aszf'
 import { Route as IndexRouteImport } from './routes/index'
 
 const SzolgaltatasokRoute = SzolgaltatasokRouteImport.update({
@@ -41,6 +42,11 @@ const InformaciokRoute = InformaciokRouteImport.update({
   path: '/informaciok',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AszfRoute = AszfRouteImport.update({
+  id: '/aszf',
+  path: '/aszf',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -49,6 +55,7 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/aszf': typeof AszfRoute
   '/informaciok': typeof InformaciokRoute
   '/kapcsolat': typeof KapcsolatRoute
   '/publikaciok': typeof PublikaciokRoute
@@ -57,6 +64,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/aszf': typeof AszfRoute
   '/informaciok': typeof InformaciokRoute
   '/kapcsolat': typeof KapcsolatRoute
   '/publikaciok': typeof PublikaciokRoute
@@ -66,6 +74,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/aszf': typeof AszfRoute
   '/informaciok': typeof InformaciokRoute
   '/kapcsolat': typeof KapcsolatRoute
   '/publikaciok': typeof PublikaciokRoute
@@ -76,6 +85,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/aszf'
     | '/informaciok'
     | '/kapcsolat'
     | '/publikaciok'
@@ -84,6 +94,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/aszf'
     | '/informaciok'
     | '/kapcsolat'
     | '/publikaciok'
@@ -92,6 +103,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/aszf'
     | '/informaciok'
     | '/kapcsolat'
     | '/publikaciok'
@@ -101,6 +113,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AszfRoute: typeof AszfRoute
   InformaciokRoute: typeof InformaciokRoute
   KapcsolatRoute: typeof KapcsolatRoute
   PublikaciokRoute: typeof PublikaciokRoute
@@ -145,6 +158,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InformaciokRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/aszf': {
+      id: '/aszf'
+      path: '/aszf'
+      fullPath: '/aszf'
+      preLoaderRoute: typeof AszfRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -157,6 +177,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AszfRoute: AszfRoute,
   InformaciokRoute: InformaciokRoute,
   KapcsolatRoute: KapcsolatRoute,
   PublikaciokRoute: PublikaciokRoute,
