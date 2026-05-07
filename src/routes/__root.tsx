@@ -78,10 +78,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "description", content: "Több mint 20 év szakmai tapasztalattal nyújtok mentálhigiénés és addiktológiai tanácsadást egyéneknek, hozzátartozóknak és csoportoknak." },
       { name: "author", content: "Vidák Gábor" },
       { property: "og:title", content: "Vidák Gábor — Mentálhigiénés és addiktológiai tanácsadás" },
-      { property: "og:description", content: "Bizalmas, gyakorlatias tanácsadás élethelyzeti elakadások és szerhasználati problémák esetén." },
+      { property: "og:description", content: "Több mint 20 év szakmai tapasztalattal nyújtok mentálhigiénés és addiktológiai tanácsadást egyéneknek, hozzátartozóknak és csoportoknak." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Vidák Gábor — Mentálhigiénés és addiktológiai tanácsadás" },
+      { name: "twitter:description", content: "Több mint 20 év szakmai tapasztalattal nyújtok mentálhigiénés és addiktológiai tanácsadást egyéneknek, hozzátartozóknak és csoportoknak." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/fa30f388-3931-4e39-adc6-bdec29e68170/id-preview-cf8afde4--c2801c31-f740-43f5-8c0c-18f3dd28136f.lovable.app-1778160439788.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/fa30f388-3931-4e39-adc6-bdec29e68170/id-preview-cf8afde4--c2801c31-f740-43f5-8c0c-18f3dd28136f.lovable.app-1778160439788.png" },
     ],
     links: [
       {
