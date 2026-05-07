@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Heart, Users, UserPlus, Users2, ShieldCheck, GraduationCap, HandHeart, Building2, ArrowRight } from "lucide-react";
+import portrait from "@/assets/vidak-gabor.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -30,12 +31,9 @@ function Index() {
     <>
       {/* Hero */}
       <section className="relative overflow-hidden" style={{ background: "var(--gradient-hero)" }}>
-        <div className="mx-auto max-w-6xl px-4 py-24 md:py-32">
-          <div className="max-w-3xl">
-            <span className="inline-block rounded-full border border-border bg-background/60 px-3 py-1 text-xs font-medium uppercase tracking-wider text-muted-foreground">
-              Vidák Gábor · vidakgabor.hu
-            </span>
-            <h1 className="mt-6 text-4xl font-semibold leading-tight tracking-tight text-foreground md:text-5xl lg:text-6xl">
+        <div className="mx-auto grid max-w-6xl gap-12 px-4 py-20 md:grid-cols-[1.2fr_1fr] md:items-center md:py-28">
+          <div>
+            <h1 className="text-4xl font-semibold leading-tight tracking-tight text-foreground md:text-5xl lg:text-6xl">
               Mentálhigiénés és addiktológiai tanácsadás
             </h1>
             <p className="mt-6 text-lg leading-relaxed text-muted-foreground md:text-xl">
@@ -56,6 +54,15 @@ function Index() {
                 Szolgáltatások
               </Link>
             </div>
+          </div>
+          <div className="relative mx-auto w-full max-w-sm">
+            <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-primary/20 to-accent/20 blur-2xl" aria-hidden />
+            <img
+              src={portrait}
+              alt="Vidák Gábor portré"
+              className="relative aspect-[3/4] w-full rounded-3xl object-cover shadow-[var(--shadow-soft)]"
+              loading="eager"
+            />
           </div>
         </div>
       </section>

@@ -20,13 +20,19 @@ function Kapcsolat() {
       <PageHero title="Kapcsolat" lead="Időpontot a lenti űrlapon, e-mailben vagy telefonon kérhet." />
       <div className="mx-auto grid max-w-5xl gap-10 px-4 py-16 md:grid-cols-2">
         <div className="space-y-5">
-          <a href="mailto:info@vidakgabor.hu" className="flex items-start gap-4 rounded-2xl border border-border bg-card p-6 hover:shadow-[var(--shadow-soft)]">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-soft text-primary"><Mail size={20} /></div>
-            <div><h3 className="font-semibold text-foreground">E-mail</h3><p className="mt-1 text-sm text-muted-foreground">info@vidakgabor.hu</p></div>
-          </a>
-          <a href="tel:+36000000000" className="flex items-start gap-4 rounded-2xl border border-border bg-card p-6 hover:shadow-[var(--shadow-soft)]">
+          <div className="rounded-2xl border border-border bg-card p-6">
+            <div className="flex items-start gap-4">
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-soft text-primary"><Mail size={20} /></div>
+              <div>
+                <h3 className="font-semibold text-foreground">E-mail</h3>
+                <p className="mt-1 text-sm"><a href="mailto:vidakgabor@gmail.com" className="text-muted-foreground hover:text-foreground">vidakgabor@gmail.com</a></p>
+                <p className="text-sm"><a href="mailto:vidak.gabor@pte.hu" className="text-muted-foreground hover:text-foreground">vidak.gabor@pte.hu</a></p>
+              </div>
+            </div>
+          </div>
+          <a href="tel:+36308258208" className="flex items-start gap-4 rounded-2xl border border-border bg-card p-6 hover:shadow-[var(--shadow-soft)]">
             <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-soft text-primary"><Phone size={20} /></div>
-            <div><h3 className="font-semibold text-foreground">Telefon</h3><p className="mt-1 text-sm text-muted-foreground">+36 (00) 000 0000</p></div>
+            <div><h3 className="font-semibold text-foreground">Telefon</h3><p className="mt-1 text-sm text-muted-foreground">+36 30 825 8208</p></div>
           </a>
           <div className="flex items-start gap-4 rounded-2xl border border-border bg-secondary/50 p-6">
             <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-accent/15 text-accent"><Calendar size={20} /></div>
