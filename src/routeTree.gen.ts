@@ -14,6 +14,7 @@ import { Route as RolamRouteImport } from './routes/rolam'
 import { Route as PublikaciokRouteImport } from './routes/publikaciok'
 import { Route as KapcsolatRouteImport } from './routes/kapcsolat'
 import { Route as InformaciokRouteImport } from './routes/informaciok'
+import { Route as ImpresszumRouteImport } from './routes/impresszum'
 import { Route as AszfRouteImport } from './routes/aszf'
 import { Route as AdatkezelesRouteImport } from './routes/adatkezeles'
 import { Route as IndexRouteImport } from './routes/index'
@@ -43,6 +44,11 @@ const InformaciokRoute = InformaciokRouteImport.update({
   path: '/informaciok',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ImpresszumRoute = ImpresszumRouteImport.update({
+  id: '/impresszum',
+  path: '/impresszum',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AszfRoute = AszfRouteImport.update({
   id: '/aszf',
   path: '/aszf',
@@ -63,6 +69,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/adatkezeles': typeof AdatkezelesRoute
   '/aszf': typeof AszfRoute
+  '/impresszum': typeof ImpresszumRoute
   '/informaciok': typeof InformaciokRoute
   '/kapcsolat': typeof KapcsolatRoute
   '/publikaciok': typeof PublikaciokRoute
@@ -73,6 +80,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/adatkezeles': typeof AdatkezelesRoute
   '/aszf': typeof AszfRoute
+  '/impresszum': typeof ImpresszumRoute
   '/informaciok': typeof InformaciokRoute
   '/kapcsolat': typeof KapcsolatRoute
   '/publikaciok': typeof PublikaciokRoute
@@ -84,6 +92,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/adatkezeles': typeof AdatkezelesRoute
   '/aszf': typeof AszfRoute
+  '/impresszum': typeof ImpresszumRoute
   '/informaciok': typeof InformaciokRoute
   '/kapcsolat': typeof KapcsolatRoute
   '/publikaciok': typeof PublikaciokRoute
@@ -96,6 +105,7 @@ export interface FileRouteTypes {
     | '/'
     | '/adatkezeles'
     | '/aszf'
+    | '/impresszum'
     | '/informaciok'
     | '/kapcsolat'
     | '/publikaciok'
@@ -106,6 +116,7 @@ export interface FileRouteTypes {
     | '/'
     | '/adatkezeles'
     | '/aszf'
+    | '/impresszum'
     | '/informaciok'
     | '/kapcsolat'
     | '/publikaciok'
@@ -116,6 +127,7 @@ export interface FileRouteTypes {
     | '/'
     | '/adatkezeles'
     | '/aszf'
+    | '/impresszum'
     | '/informaciok'
     | '/kapcsolat'
     | '/publikaciok'
@@ -127,6 +139,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AdatkezelesRoute: typeof AdatkezelesRoute
   AszfRoute: typeof AszfRoute
+  ImpresszumRoute: typeof ImpresszumRoute
   InformaciokRoute: typeof InformaciokRoute
   KapcsolatRoute: typeof KapcsolatRoute
   PublikaciokRoute: typeof PublikaciokRoute
@@ -171,6 +184,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InformaciokRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/impresszum': {
+      id: '/impresszum'
+      path: '/impresszum'
+      fullPath: '/impresszum'
+      preLoaderRoute: typeof ImpresszumRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/aszf': {
       id: '/aszf'
       path: '/aszf'
@@ -199,6 +219,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdatkezelesRoute: AdatkezelesRoute,
   AszfRoute: AszfRoute,
+  ImpresszumRoute: ImpresszumRoute,
   InformaciokRoute: InformaciokRoute,
   KapcsolatRoute: KapcsolatRoute,
   PublikaciokRoute: PublikaciokRoute,
