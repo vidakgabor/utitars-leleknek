@@ -78,14 +78,24 @@ function Rolam() {
               <p className="text-sm text-muted-foreground">Pécsi Tudományegyetem — „Oktatás és Társadalom” Neveléstudományi Doktori Iskola</p>
             </li>
             <li>
+              <p className="text-sm font-medium text-accent">2020. szeptember 12. – 2022. május 28.</p>
+              <p className="font-semibold text-foreground">120 órás önismereti pszichodráma csoport</p>
+              <p className="text-sm text-muted-foreground">Magyar Pszichodráma Egyesület</p>
+            </li>
+            <li>
               <p className="text-sm font-medium text-accent">2017. szeptember – 2019. június</p>
               <p className="font-semibold text-foreground">Emberi erőforrás tanácsadó (MA)</p>
               <p className="text-sm text-muted-foreground">Eötvös Loránd Tudományegyetem</p>
             </li>
             <li>
-              <p className="text-sm font-medium text-accent">2016. szeptember – 2017. június</p>
-              <p className="font-semibold text-foreground">Romani Studies Program — Public Policy Tutoring</p>
+              <p className="text-sm font-medium text-accent">2016. május – június</p>
+              <p className="font-semibold text-foreground">Project Management Workshop</p>
               <p className="text-sm text-muted-foreground">Central European University</p>
+            </li>
+            <li>
+              <p className="text-sm font-medium text-accent">2014. július – október</p>
+              <p className="font-semibold text-foreground">Coaching a szociális munkában (tanfolyam)</p>
+              <p className="text-sm text-muted-foreground">Budapesti Módszertani Szociális Központ</p>
             </li>
             <li>
               <p className="text-sm font-medium text-accent">2008. szeptember – 2012. június</p>
