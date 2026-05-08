@@ -15,6 +15,36 @@ export const Route = createFileRoute("/kapcsolat")({
 
 function Kapcsolat() {
   const [sent, setSent] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setError(null);
+    setLoading(true);
+    const fd = new FormData(e.currentTarget);
+    try {
+      const res = await fetch("/api/public/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: fd.get("name"),
+          email: fd.get("email"),
+          phone: fd.get("phone"),
+          preferredTime: fd.get("preferredTime"),
+          message: fd.get("message"),
+        }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data?.error || "Az üzenet küldése nem sikerült.");
+      setSent(true);
+      (e.target as HTMLFormElement).reset();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Ismeretlen hiba.");
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <>
       <PageHero title="Kapcsolat" lead="Időpontot a lenti űrlapon, e-mailben vagy telefonon kérhet." />
@@ -39,15 +69,18 @@ function Kapcsolat() {
             <div><h3 className="font-semibold text-foreground">Időpontfoglalás</h3><p className="mt-1 text-sm text-muted-foreground">Az űrlapon jelezze kívánt időpontját, hamarosan visszajelzek.</p></div>
           </div>
         </div>
-        <form onSubmit={(e) => { e.preventDefault(); setSent(true); }} className="space-y-4 rounded-2xl border border-border bg-card p-7">
+        <form onSubmit={handleSubmit} className="space-y-4 rounded-2xl border border-border bg-card p-7">
           <h2 className="text-xl font-semibold text-foreground">Kapcsolatfelvétel</h2>
-          <div><label className="text-sm font-medium text-foreground">Név</label><input required maxLength={100} className="mt-1 w-full rounded-lg border border-input bg-background px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-ring" /></div>
-          <div><label className="text-sm font-medium text-foreground">E-mail</label><input required type="email" maxLength={255} className="mt-1 w-full rounded-lg border border-input bg-background px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-ring" /></div>
-          <div><label className="text-sm font-medium text-foreground">Telefon (opcionális)</label><input type="tel" maxLength={30} className="mt-1 w-full rounded-lg border border-input bg-background px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-ring" /></div>
-          <div><label className="text-sm font-medium text-foreground">Kívánt időpont (opcionális)</label><input type="text" placeholder="pl. hétfő délután" maxLength={120} className="mt-1 w-full rounded-lg border border-input bg-background px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-ring" /></div>
-          <div><label className="text-sm font-medium text-foreground">Üzenet</label><textarea required maxLength={2000} rows={5} className="mt-1 w-full rounded-lg border border-input bg-background px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-ring" /></div>
-          <button type="submit" className="w-full rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:opacity-90">Üzenet küldése</button>
+          <div><label className="text-sm font-medium text-foreground">Név</label><input name="name" required maxLength={100} className="mt-1 w-full rounded-lg border border-input bg-background px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-ring" /></div>
+          <div><label className="text-sm font-medium text-foreground">E-mail</label><input name="email" required type="email" maxLength={255} className="mt-1 w-full rounded-lg border border-input bg-background px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-ring" /></div>
+          <div><label className="text-sm font-medium text-foreground">Telefon (opcionális)</label><input name="phone" type="tel" maxLength={30} className="mt-1 w-full rounded-lg border border-input bg-background px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-ring" /></div>
+          <div><label className="text-sm font-medium text-foreground">Kívánt időpont (opcionális)</label><input name="preferredTime" type="text" placeholder="pl. hétfő délután" maxLength={120} className="mt-1 w-full rounded-lg border border-input bg-background px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-ring" /></div>
+          <div><label className="text-sm font-medium text-foreground">Üzenet</label><textarea name="message" required maxLength={2000} rows={5} className="mt-1 w-full rounded-lg border border-input bg-background px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-ring" /></div>
+          <button type="submit" disabled={loading} className="w-full rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:opacity-90 disabled:opacity-60">
+            {loading ? "Küldés…" : "Üzenet küldése"}
+          </button>
           {sent && (<p className="rounded-lg bg-accent/15 px-3 py-2 text-sm text-foreground">Köszönöm! Hamarosan visszajelzek a megadott elérhetőségen.</p>)}
+          {error && (<p className="rounded-lg bg-destructive/10 px-3 py-2 text-sm text-destructive">{error}</p>)}
         </form>
       </div>
     </>
