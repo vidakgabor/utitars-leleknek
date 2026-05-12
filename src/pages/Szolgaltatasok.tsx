@@ -1,15 +1,6 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { PageHero } from "@/components/PageHero";
-
-export const Route = createFileRoute("/szolgaltatasok")({
-  head: () => ({
-    meta: [
-      { title: "Szolgáltatások — Vidák Gábor" },
-      { name: "description", content: "Egyéni, addiktológiai, hozzátartozói és csoportos tanácsadási szolgáltatások." },
-    ],
-  }),
-  component: Szolgaltatasok,
-});
 
 const sections = [
   { title: "Egyéni mentálhigiénés tanácsadás", items: ["élethelyzeti elakadások", "stressz, döntési helyzetek", "kapcsolati problémák", "önismeret"] },
@@ -19,9 +10,13 @@ const sections = [
   { title: "Emberi erőforrás tanácsadás", items: ["pályaorientáció", "életút tervezés"] },
 ];
 
-function Szolgaltatasok() {
+export default function Szolgaltatasok() {
   return (
     <>
+      <Helmet>
+        <title>Szolgáltatások — Vidák Gábor</title>
+        <meta name="description" content="Egyéni, addiktológiai, hozzátartozói és csoportos tanácsadási szolgáltatások." />
+      </Helmet>
       <PageHero title="Szolgáltatások" lead="Egyéni, családi és csoportos formában — szakmai, gyakorlatias megközelítéssel." />
       <div className="mx-auto max-w-4xl space-y-6 px-4 py-16">
         {sections.map((s) => (

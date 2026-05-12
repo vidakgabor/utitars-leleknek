@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
@@ -24,14 +24,16 @@ export function SiteHeader() {
         </Link>
         <nav className="hidden items-center gap-7 md:flex">
           {links.map((l) => (
-            <Link
+            <NavLink
               key={l.to}
               to={l.to}
-              activeOptions={{ exact: l.to === "/" }}
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground data-[status=active]:text-foreground data-[status=active]:font-medium"
+              end={l.to === "/"}
+              className={({ isActive }) =>
+                `text-sm transition-colors hover:text-foreground ${isActive ? "text-foreground font-medium" : "text-muted-foreground"}`
+              }
             >
               {l.label}
-            </Link>
+            </NavLink>
           ))}
           <Link
             to="/kapcsolat"

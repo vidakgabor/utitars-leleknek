@@ -1,16 +1,7 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { Heart, Users, UserPlus, Users2, ShieldCheck, GraduationCap, HandHeart, Building2, ArrowRight } from "lucide-react";
 import portrait from "@/assets/vidak-gabor.jpg";
-
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Vidák Gábor — Mentálhigiénés és addiktológiai tanácsadás" },
-      { name: "description", content: "Bizalmas, szakmai tanácsadás élethelyzeti elakadások, szerhasználati problémák és családi nehézségek esetén." },
-    ],
-  }),
-  component: Index,
-});
 
 const services = [
   { icon: Heart, title: "Egyéni tanácsadás", desc: "Élethelyzeti elakadások, stressz, önismeret." },
@@ -26,10 +17,13 @@ const trust = [
   { icon: Users, label: "Civil és alapítványi munka" },
 ];
 
-function Index() {
+export default function Index() {
   return (
     <>
-      {/* Hero */}
+      <Helmet>
+        <title>Vidák Gábor — Mentálhigiénés és addiktológiai tanácsadás</title>
+        <meta name="description" content="Bizalmas, szakmai tanácsadás élethelyzeti elakadások, szerhasználati problémák és családi nehézségek esetén." />
+      </Helmet>
       <section className="relative overflow-hidden" style={{ background: "var(--gradient-hero)" }}>
         <div className="mx-auto grid max-w-6xl gap-12 px-4 py-20 md:grid-cols-[1.2fr_1fr] md:items-center md:py-28">
           <div>
@@ -41,33 +35,21 @@ function Index() {
               szerhasználati problémák és családi nehézségek kezelésében.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link
-                to="/kapcsolat"
-                className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow-[var(--shadow-soft)] transition-opacity hover:opacity-90"
-              >
+              <Link to="/kapcsolat" className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow-[var(--shadow-soft)] transition-opacity hover:opacity-90">
                 Időpont foglalás <ArrowRight size={16} />
               </Link>
-              <Link
-                to="/szolgaltatasok"
-                className="inline-flex items-center rounded-full border border-border bg-background/70 px-6 py-3 text-sm font-medium text-foreground hover:bg-background"
-              >
+              <Link to="/szolgaltatasok" className="inline-flex items-center rounded-full border border-border bg-background/70 px-6 py-3 text-sm font-medium text-foreground hover:bg-background">
                 Szolgáltatások
               </Link>
             </div>
           </div>
           <div className="relative mx-auto w-full max-w-sm">
             <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-primary/20 to-accent/20 blur-2xl" aria-hidden />
-            <img
-              src={portrait}
-              alt="Vidák Gábor portré"
-              className="relative aspect-[3/4] w-full rounded-3xl object-cover shadow-[var(--shadow-soft)]"
-              loading="eager"
-            />
+            <img src={portrait} alt="Vidák Gábor portré" className="relative aspect-[3/4] w-full rounded-3xl object-cover shadow-[var(--shadow-soft)]" loading="eager" />
           </div>
         </div>
       </section>
 
-      {/* Bemutatkozás */}
       <section className="mx-auto max-w-4xl px-4 py-20">
         <h2 className="text-2xl font-semibold text-foreground md:text-3xl">Rövid bemutatkozás</h2>
         <p className="mt-5 text-base leading-relaxed text-muted-foreground md:text-lg">
@@ -80,7 +62,6 @@ function Index() {
         </Link>
       </section>
 
-      {/* Szolgáltatások kártyák */}
       <section className="bg-secondary/40 py-20">
         <div className="mx-auto max-w-6xl px-4">
           <h2 className="text-2xl font-semibold text-foreground md:text-3xl">Szolgáltatások</h2>
@@ -99,7 +80,6 @@ function Index() {
         </div>
       </section>
 
-      {/* Bizalom */}
       <section className="mx-auto max-w-6xl px-4 py-20">
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {trust.map((t) => (
@@ -113,16 +93,12 @@ function Index() {
         </div>
       </section>
 
-      {/* CTA */}
       <section className="mx-auto max-w-5xl px-4 pb-24">
         <div className="rounded-3xl border border-border bg-gradient-to-br from-primary to-accent px-8 py-14 text-center text-primary-foreground shadow-[var(--shadow-soft)] md:px-16">
           <h2 className="text-2xl font-semibold md:text-3xl">
             Ha úgy érzi, elakadt, és szeretne változtatni, keressen bizalommal.
           </h2>
-          <Link
-            to="/kapcsolat"
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-background px-6 py-3 text-sm font-medium text-foreground transition-opacity hover:opacity-90"
-          >
+          <Link to="/kapcsolat" className="mt-8 inline-flex items-center gap-2 rounded-full bg-background px-6 py-3 text-sm font-medium text-foreground transition-opacity hover:opacity-90">
             Időpont foglalás <ArrowRight size={16} />
           </Link>
         </div>

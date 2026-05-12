@@ -1,16 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { Helmet } from "react-helmet-async";
 import { PageHero } from "@/components/PageHero";
 import { Clock, Users, Monitor, Wallet, AlertCircle } from "lucide-react";
-
-export const Route = createFileRoute("/informaciok")({
-  head: () => ({
-    meta: [
-      { title: "Gyakorlati információk — Vidák Gábor" },
-      { name: "description", content: "Konzultációs idők, formák és díjazás." },
-    ],
-  }),
-  component: Informaciok,
-});
 
 const items = [
   { icon: Clock, title: "Egyéni konzultáció", text: "50 perc" },
@@ -20,9 +10,13 @@ const items = [
   { icon: Wallet, title: "Csoportos részvétel", text: "egyeztetés alapján" },
 ];
 
-function Informaciok() {
+export default function Informaciok() {
   return (
     <>
+      <Helmet>
+        <title>Gyakorlati információk — Vidák Gábor</title>
+        <meta name="description" content="Konzultációs idők, formák és díjazás." />
+      </Helmet>
       <PageHero title="Gyakorlati információk" lead="Időtartamok, forma és díjazás." />
       <div className="mx-auto max-w-4xl px-4 py-16">
         <div className="grid gap-4 sm:grid-cols-2">

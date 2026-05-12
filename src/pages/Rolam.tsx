@@ -1,19 +1,13 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { Helmet } from "react-helmet-async";
 import { PageHero } from "@/components/PageHero";
 
-export const Route = createFileRoute("/rolam")({
-  head: () => ({
-    meta: [
-      { title: "Rólam — Vidák Gábor" },
-      { name: "description", content: "Vidák Gábor mentálhigiénés szakember, szociális munkás, emberi erőforrás tanácsadó bemutatkozása." },
-    ],
-  }),
-  component: Rolam,
-});
-
-function Rolam() {
+export default function Rolam() {
   return (
     <>
+      <Helmet>
+        <title>Rólam — Vidák Gábor</title>
+        <meta name="description" content="Vidák Gábor mentálhigiénés szakember, szociális munkás, emberi erőforrás tanácsadó bemutatkozása." />
+      </Helmet>
       <PageHero title="Rólam" lead="Mentálhigiénés szakember, szociális munkás és emberi erőforrás tanácsadó." />
       <article className="mx-auto max-w-3xl space-y-5 px-4 py-16 text-base leading-relaxed text-foreground md:text-lg">
         <p>Vidák Gábor vagyok, mentálhigiénés szakember, szociális munkás és emberi erőforrás tanácsadó.</p>

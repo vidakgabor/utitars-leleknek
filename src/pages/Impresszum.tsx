@@ -1,14 +1,10 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { Helmet } from "react-helmet-async";
 import { PageHero } from "@/components/PageHero";
 
-export const Route = createFileRoute("/impresszum")({
-  head: () => ({ meta: [{ title: "Impresszum — Vidák Gábor" }, { name: "description", content: "Impresszum és üzemeltetői adatok." }] }),
-  component: Impresszum,
-});
-
-function Impresszum() {
+export default function Impresszum() {
   return (
     <>
+      <Helmet><title>Impresszum — Vidák Gábor</title><meta name="description" content="Impresszum és üzemeltetői adatok." /></Helmet>
       <PageHero title="Impresszum" />
       <article className="mx-auto max-w-3xl space-y-3 px-4 py-16 text-sm leading-relaxed text-muted-foreground">
         <p><strong className="text-foreground">Üzemeltető:</strong> Vidák Gábor</p>
