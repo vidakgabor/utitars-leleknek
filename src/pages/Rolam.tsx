@@ -37,10 +37,16 @@ export default function Rolam() {
               <p className="mt-1 text-sm">EFOP humánerőforrás-fejlesztési projekt menedzselése, szociális munkások koordinálása, ügyfélszükségletek felmérése.</p>
             </li>
             <li>
+              <p className="text-sm font-medium text-accent">2022. október – 2024. szeptember</p>
+              <p className="font-semibold text-foreground">Mentor</p>
+              <p className="text-sm text-muted-foreground">Zsibriki Drogterápiás Intézet</p>
+              <p className="mt-1 text-sm">A Drogterápiás Intézetben mentorként függőkkel és hozzátartozóikkal foglalkoztam egyéni és csoportos mentorálási folyamatok keretében.</p>
+            </li>
+            <li>
               <p className="text-sm font-medium text-accent">2018. június – 2021. december</p>
-              <p className="font-semibold text-foreground">Projektmenedzser</p>
-              <p className="text-sm text-muted-foreground">Kömlő Önkormányzata</p>
-              <p className="mt-1 text-sm">EFOP program vezetése, csapatirányítás, kapcsolattartás önkormányzatokkal és szolgáltatókkal, mérföldkövek tartása.</p>
+              <p className="font-semibold text-foreground">Szakmai vezető</p>
+              <p className="text-sm text-muted-foreground">EFOP projektek</p>
+              <p className="mt-1 text-sm">Felzárkóztató és esélyegyenlőségi programok vezetése, csapatirányítás, kapcsolattartás önkormányzatokkal és szolgáltatókkal, mérföldkövek tartása.</p>
             </li>
             <li>
               <p className="text-sm font-medium text-accent">2017. június – 2020. június</p>
